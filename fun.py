@@ -14,20 +14,16 @@ for i in range(0,6):
     turtle.setposition(x=-230,y=ypos[i])
     game_list.append(turtle)
 
-game=True
-user=screen.textinput("BET GAME","Enter the Color you Bet:")
-if user:
-    game=False
+
+game=False
 while not game:
     for i in game_list:
         speed = random.randint(0, 15)
         i.forward(speed)
         if i.xcor()>250:
             winner=i.pencolor()
-            game = True
-            if user==winner:
-                print("You won")
-            else:
-                print(f"You lost the winner is {winner}")
+            i.setheading(180)
+        elif i.xcor()<-250:
+            i.setheading(0)
 
 screen.exitonclick()
